@@ -1,0 +1,181 @@
+.body{
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+}
+
+#master-div{
+
+    width: 100%;
+    height: 100vh;
+   
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style the select element */
+#cap-dropdown {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    width: 10px;
+    position: relative;
+  }
+  
+  /* Style the dropdown arrow */
+  #cap-dropdown::after {
+    content: '\25BC'; /* Unicode character for the dropdown arrow */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0 4px;
+  }
+  
+  #left-nav-div{
+    background-color: rgba(0,0,0,.4);
+    width: 5%;
+    height: 100%;
+    background-color: #212A3E;
+    color: white;
+    position: fixed;
+    padding-top: 1%;
+    
+}
+
+
+  #chat-selector{
+    width: 20%;
+     background-color: #001C30;
+     color: white;
+    margin-left: 5%;
+    padding-left: 1%;
+    position: fixed;
+    justify-content: space-between;
+    height: 100vh;
+    padding-top: 1%;
+  }
+
+
+
+  #chat-data{
+    background-color: #F1F6F9;
+    width: 50%;
+    margin-left: 26%;
+  }
+     
+
+  #chat-div{
+    width: 20%;
+    background-color: white;
+    position: fixed;
+    margin-left: 76%;
+    box-shadow: inset 0 0 5px #ffffff0d;
+    padding-top: 1%;
+  }
+
+  #right-nav{
+    background-color: #212A3E;
+    color: white;
+    width: 5%;
+    position: fixed;
+    margin-left: 96%;
+    height: 100vh;
+    padding-top: 1%;
+  }
+      
+  .ant-menu-title-content {
+    font-size: 20px; /* You can adjust the font size as needed */
+  }
+
+  /* Increase the size of the SVG icons */
+  .ant-menu-item-icon svg {
+    width: 20px; /* You can adjust the width and height to change the size */
+    height: 20px;
+    margin-top: 95%;
+  }
+  
+
+
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #popupForm {
+    display: none;
+    color: white;
+    position: relative;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #001C30;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 200px;
+}
+
+#popupForm label,
+#popupForm input
+ {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#popupForm button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 30%;
+}
+
+  #messageappend {
+    padding-left: 5%;
+    background-color: #F1F6F9;
+    padding-top: 2%;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+/* Additional styles for the message container */
+.message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 5px 0;
+}
+
+/* Define styles for your messages */
+.my-message {
+  background-color: #cce6ff; /* Light blue */
+  border-radius: 10px;
+  padding: 8px;
+  margin-left: auto;
+}
+
+/* Define styles for others' messages */
+.other-message {
+  background-color: #f0f0f0; /* Light gray */
+  border-radius: 10px;
+  padding: 8px;
+  margin-right: auto;
+}
+
+/* Additional styles for the date */
+.message-container p:nth-child(3) {
+  margin-left: 10px; /* Add some space between the message and date */
+}
+

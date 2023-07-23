@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <style>
+        #signin1 input{
+            height: 25px;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body style="background-color: rgb(0, 201, 221);;">
+    <nav style="height: 70px; background-color: white; display: flex; justify-content: space-between; padding: 5px 10% 5px 10%; margin: 0 0 0 0;">
+         <img src="logo.png" alt="Error" style="height: 100%; width: 10%;">
+         <h3>Need Support?</h3>
+    </nav>
+    <div id="container" style="margin: 5% 20% 0% 20%; display: flex;">
+        <div id="signin1" style="background-color: white; width: 50%; padding-left: 15px; border-radius: 5px;">
+         <h1>Sign in</h1>
+         <h3>Don't have an account <a href="signup.html">Sign up</a></h3>
+         <h4>Email</h4>
+         <input type="text" placeholder="Enter your email" id="email"><i class="fa-solid fa-envelope" style="padding-left: 10px;"></i>
+         <h4>Password</h4>
+         <input type="password" placeholder="Enter your password" id="pass"><i class="fa-solid fa-lock" style="padding-left: 10px;"></i>
+         <button onclick="login()" style="display: block; margin-top: 10px;height: 40px; width: 70px; border-radius: 5px; background-color: greenyellow;">Signin</button>
+         <p>Forgot Password <a href="">Click here</a></p>
+        </div>
+        <div id="signin2" style="width: 50%; padding-left: 100px;">
+            <h1>Sign in</h1>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Smarter Live Chat</h3>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Easy to Use Dashboard</h3>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Agent Assist</h3>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Team Inbox</h3>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Apps for Desktop & Mobile</h3>
+            <h3 style="color: white;"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>+ Lots More Features</h3>
+            <a href="">View Features<i class="fa-solid fa-arrow-right" style="padding-left: 10px; font-size: small;"></i></a>
+        </div>
+
+    </div>
+    
+    
+</body>
+<script>
+    function login(){
+        const payload = {
+            email:document.getElementById("email").value,
+            password:document.getElementById("pass").value
+        }
+           
+        fetch("http://localhost:8000/users/login",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json"
+        },
+         body:JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res=>{
+
+        localStorage.setItem("token",res[1].token)
+        localStorage.setItem("name",res[2].name)
+        console.log(res[1].token)
+       alert(res[0].message)
+       if (res[0].message == "Login Success"){
+         window.location.href="../frontend/dashboard.html";
+       }})
+    .catch(err=>console.log(err))
+    }
+</script>
+</html>

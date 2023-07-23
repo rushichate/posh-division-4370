@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <style>
+        #container{
+            background: white;
+            width: 40%;
+            margin: 1% 30% 1% 30%;
+            text-align: left;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+        }
+        button :hover{
+             color:  magenta;
+        }
+        #container input{
+            height: 25px;
+            width: 300px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(0, 201, 221);; text-align: center;">
+    <img src="logo.png" alt="Error" style="height: 150px; margin-top: 10px; border-radius: 10px;">
+    <div id="container">
+        <h1>Your user account</h1>
+        <h3>Set your personal sign-in details</h3>
+        <h4>Name*</h4>
+        <input type="text" id="name" placeholder="Enter your full name"><i class="fa-solid fa-user" style="padding-left: 10px;"></i>
+        <h4>Email*</h4>
+        <input type="text" id="email" placeholder="Enter your email"><i class="fa-solid fa-envelope" style="padding-left: 10px;"></i>
+        <h4>Password*</h4>
+        <input type="password" id="pass1" placeholder="Enter password"><i class="fa-solid fa-lock" style="padding-left: 10px;"></i>
+        <h4>Retype Password*</h4>
+        <input type="password" id="pass2" placeholder="Retype password"><i class="fa-solid fa-lock" style="padding-left: 10px;"></i>
+    </div>
+    <button onclick="signup()" style="background-color:greenyellow; border-radius: 10px; width: 200px;"><h3>Creat Account</h3></button><i class="fa-solid fa-arrow-right" style="padding-left: 10px; font-size: larger;"></i>
+    
+</body>
+<script>
+      
+      function signup(){
+    
+           const name=document.getElementById("name").value
+           const email=document.getElementById("email").value
+           const pass1=document.getElementById("pass1").value
+           const pass2=document.getElementById("pass2").value
+       
+           if(pass1!==pass2){
+            return alert("Both Password should match");
+        }
+
+        const password = pass1;
+
+        const payload = {name,email,password}
+        
+           
+        fetch("http://localhost:8000/users/signup",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json"
+        },
+         body:JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res=>{
+        alert(res.message)
+       if (res.message == "User created"){
+         window.location.href="./signin.html";
+       }
+    })
+    .catch(err=>console.log(err))
+
+    
+    }   
+    
+</script>
+</html>
