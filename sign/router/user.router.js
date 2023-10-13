@@ -46,6 +46,8 @@ userRouter.post("/login",async(req,res)=>{
 
       await redis.set("_access_token",accessToken,"EX",60*5)
       await redis.set("_refresh_token",refreshToken,"EX",60*10)
+
+      res.setHeader('Authorization', accessToken);
       
       res.status(200).json([{message:"Login Success"},{token:accessToken},{name:isUserValid.name}]);
     }catch(err){
