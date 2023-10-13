@@ -14,12 +14,8 @@ const varify=require("./sign/middleware/auth");
 
 app.use(express.json())
 app.use(cors());
-
-app.get("/",(req,res)=>{
-  res.sendFile(__dirname+"/frontend/index.html")
-})
 app.use("/users",userRouter)
- app.use(varify)
+app.use(varify)
 app.use("/message",messageRouter)
 app.use("/group",groupRouter)
 

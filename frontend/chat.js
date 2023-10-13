@@ -5,7 +5,6 @@ const socket=io("http://localhost:8000",{transports:["websocket"]})
 
 
 
-  
 
 
 openFormBtn.addEventListener("click", () => {

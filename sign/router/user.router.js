@@ -41,8 +41,8 @@ userRouter.post("/login",async(req,res)=>{
       const accessToken = jwt.sign({name:isUserValid.name},"masai",{expiresIn:"60m"})
       const refreshToken = jwt.sign({name:isUserValid.name},"masaimasai",{expiresIn:"10m"})
 
-      await redis.set(isUserValid._id + "_access_token",accessToken,"EX",60*5)
-      await redis.set(isUserValid._id + "_refresh_token",refreshToken,"EX",60*10)
+      await redis.set("_access_token",accessToken,"EX",60*5)
+      await redis.set("_refresh_token",refreshToken,"EX",60*10)
       
       res.status(200).json([{message:"Login Success"},{token:accessToken},{name:isUserValid.name}]);
     }catch(err){
@@ -52,5 +52,6 @@ userRouter.post("/login",async(req,res)=>{
 
 
 module.exports = {
-    userRouter
+    userRouter,
+    redis
 }
