@@ -95,7 +95,7 @@ io.on("connection",(Socket)=>{
 
 
 
-httpServer.listen(process.env.port,async()=>{
+httpServer.listen(8000,async()=>{
     try{
     await serverConnect
     console.log("connected to DB")
