@@ -1,12 +1,12 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
-const Redis = require("ioredis")
+// const Redis = require("ioredis")
 const { UserModel } = require("../model/user.model");
-const redis = new Redis({
-  host: '127.0.0.1',
-  port: 6379,
-});
+// const redis = new Redis({
+//   host: '127.0.0.1',
+//   port: 6379,
+// });
 const userRouter = express.Router();
 
 
@@ -44,8 +44,8 @@ userRouter.post("/login",async(req,res)=>{
       const accessToken = jwt.sign({name:isUserValid.name},"masai",{expiresIn:"60m"})
       const refreshToken = jwt.sign({name:isUserValid.name},"masaimasai",{expiresIn:"10m"})
 
-      await redis.set("_access_token",accessToken,"EX",60*5)
-      await redis.set("_refresh_token",refreshToken,"EX",60*10)
+      // await redis.set("_access_token",accessToken,"EX",60*5)
+      // await redis.set("_refresh_token",refreshToken,"EX",60*10)
 
       res.setHeader('Authorization', accessToken);
       

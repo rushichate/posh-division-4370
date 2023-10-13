@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { redis } = require("../router/user.router");
+// const { redis } = require("../router/user.router");
 
 
 const varify = async (req, res, next) => {
