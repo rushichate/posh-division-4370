@@ -1,7 +1,7 @@
 
 
 
-const socket=io("http://localhost:8000",{transports:["websocket"]})
+const socket=io("https://chatapp-aizg.onrender.com",{transports:["websocket"]})
 
 
 
@@ -48,7 +48,7 @@ create.addEventListener("click",(e)=>{
   {
     let token=localStorage.getItem("token")
     let obj={groupname:`${value}`}
-    fetch("http://localhost:8000/group/addgroup",{
+    fetch("https://chatapp-aizg.onrender.com/group/addgroup",{
       method:"POST",
       headers: {
         'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function option()
 {
 
   let token=localStorage.getItem("token")
-  fetch("http://localhost:8000/group/groupget",{
+  fetch("https://chatapp-aizg.onrender.com/group/groupget",{
     method:"GET",
     headers: {
       'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ message.addEventListener("click",(e)=>{
     let token=localStorage.getItem("token")
   let obj={group:group.value,message:inputmessage.value}
   console.log(obj)
-  fetch("http://localhost:8000/message/addmessage",{
+  fetch("https://chatapp-aizg.onrender.com/message/addmessage",{
     method:"POST",
     headers: {
       'Content-Type': 'application/json',
@@ -206,7 +206,7 @@ socket.on("response",(msg)=>{
  function dataappend(msg)
  {
   let token=localStorage.getItem("token")
-  fetch(`http://localhost:8000/message/messageget/${msg}`,{
+  fetch(`https://chatapp-aizg.onrender.com/message/messageget/${msg}`,{
     method:"GET",
     headers: {
       'Content-Type': 'application/json',
