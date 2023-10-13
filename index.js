@@ -22,8 +22,8 @@ app.use(varify)
 app.get("/ok",(req,res)=>{
   res.send("verify working")
 })
-// app.use("/message",messageRouter)
-// app.use("/group",groupRouter)
+app.use("/message",messageRouter)
+app.use("/group",groupRouter)
 
 
 
