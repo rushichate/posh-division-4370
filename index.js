@@ -11,14 +11,19 @@ const httpServer = http.createServer(app)
 const io = new Server(httpServer);
 const varify=require("./sign/middleware/auth");
 
-
+app.get("/",(req,res)=>{
+  res.send("Welcome to chatApp")
+})
 
 app.use(express.json())
 app.use(cors());
 app.use("/users",userRouter)
 app.use(varify)
-app.use("/message",messageRouter)
-app.use("/group",groupRouter)
+app.get("/ok",(req,res)=>{
+  res.send("verify working")
+})
+// app.use("/message",messageRouter)
+// app.use("/group",groupRouter)
 
 
 
