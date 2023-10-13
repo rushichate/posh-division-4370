@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 const { redis } = require("../router/user.router");
 
 
-const varify = (req, res, next) => {
-    redis.get("_access_token",(err,result)=>{
+const varify = async (req, res, next) => {
+  await  redis.get("_access_token",(err,result)=>{
         if(err){
             res.send("Login First")
             console.log(err)
