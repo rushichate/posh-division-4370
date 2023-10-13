@@ -1,7 +1,8 @@
 const express = require("express")
 const {Server} = require("socket.io")
 const http = require("http")
-const cors = require("cors");
+const cors = require("cors")
+require("dotenv").config()
 const { serverConnect } = require("./db");
 const { userRouter } = require("./sign/router/user.router");
 const { messageRouter, groupRouter } = require("./sign/router/chat");
@@ -89,11 +90,10 @@ io.on("connection",(Socket)=>{
 
 
 
-httpServer.listen(8000,async()=>{
+httpServer.listen(process.env.port,async()=>{
     try{
     await serverConnect
     console.log("connected to DB")
-    console.log("running on 8000")
     }catch(err){
         console.log(err)
     }
