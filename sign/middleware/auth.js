@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 // const { redis } = require("../router/user.router");
 
 
-const varify = async (req, res, next) => {
+const verify = async (req, res, next) => {
 //   await  redis.get("_access_token",(err,result)=>{
 //         if(err){
 //             res.send("Login First")
@@ -12,7 +12,10 @@ const varify = async (req, res, next) => {
 //         }
 //     })
 
-const token = req.headers.Authorization
+const token = req.header('Authorization');
+
+if (!token) return res.sendStatus(401);
+
 jwt.verify(token, 'masai', function (err, decoded) {
     if (decoded) {
         req.body.user = decoded.name;
@@ -25,4 +28,4 @@ jwt.verify(token, 'masai', function (err, decoded) {
 };
 
 
-module.exports=varify
+module.exports = verify;

@@ -6,10 +6,10 @@ require("dotenv").config()
 const { serverConnect } = require("./db");
 const { userRouter } = require("./sign/router/user.router");
 const { messageRouter, groupRouter } = require("./sign/router/chat");
+const verify = require("./sign/middleware/auth")
 const app = express()
 const httpServer = http.createServer(app)
 const io = new Server(httpServer);
-const varify=require("./sign/middleware/auth");
 
 app.get("/",(req,res)=>{
   res.send("Welcome to chatApp")
@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 app.use(express.json())
 app.use(cors());
 app.use("/users",userRouter)
-app.use(varify)
+app.use(verify)
 app.get("/ok",(req,res)=>{
   res.send("verify working")
 })

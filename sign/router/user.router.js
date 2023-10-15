@@ -41,15 +41,14 @@ userRouter.post("/login",async(req,res)=>{
         return  res.status(500).json([{message:"Wrong Credentials"}])
       }
 
-      const accessToken = jwt.sign({name:isUserValid.name},"masai",{expiresIn:"60m"})
-      const refreshToken = jwt.sign({name:isUserValid.name},"masaimasai",{expiresIn:"10m"})
+      const accessToken = jwt.sign({name:isUserValid.name},"masai",{expiresIn:"10m"})
+      const refreshToken = jwt.sign({name:isUserValid.name},"masaimasai",{expiresIn:"60m"})
 
       // await redis.set("_access_token",accessToken,"EX",60*5)
       // await redis.set("_refresh_token",refreshToken,"EX",60*10)
 
-      res.setHeader('Authorization', accessToken);
       
-      res.status(200).json([{message:"Login Success"},{token:accessToken},{name:isUserValid.name}]);
+      res.status(200).json({message:"Login Success",token:accessToken,name:isUserValid.name});
     }catch(err){
        res.status(400).json(err.message)
     }
