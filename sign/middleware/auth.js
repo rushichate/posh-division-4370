@@ -1,18 +1,12 @@
 const jwt = require("jsonwebtoken");
-// const { redis } = require("../router/user.router");
+
 
 
 const verify = async (req, res, next) => {
-//   await  redis.get("_access_token",(err,result)=>{
-//         if(err){
-//             res.send("Login First")
-//             console.log(err)
-//         }else{
-           
-//         }
-//     })
 
-const token = req.header('Authorization');
+
+const token = req.headers.Authorization;
+console.log(token)
 
 if (!token) return res.sendStatus(401);
 

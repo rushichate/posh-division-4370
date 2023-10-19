@@ -55,15 +55,14 @@
         fetch("https://chatapp-aizg.onrender.com/users/login",{
         method:"POST",
         headers:{
-            "Content-type":"application/json",
-            'Authorization': 'Bearer ' + token
+            "Content-type":"application/json"
         },
          body:JSON.stringify(payload)
     }).then(res=>res.json())
     .then(res=>{
-
         localStorage.setItem("token",res.token)
         localStorage.setItem("name",res.name)
+        console.log(res.message)
        alert(res.message)
        if (res.message == "Login Success"){
          window.location.href="../frontend/dashboard.html";

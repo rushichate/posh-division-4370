@@ -33,12 +33,12 @@ userRouter.post("/login",async(req,res)=>{
     try{
       const isUserValid = await UserModel.findOne({email})
       if(!isUserValid){
-        return  res.status(500).json([{message:"Please Signup First"}])
+        return  res.status(500).json({message:"Please Signup First"})
       }
 
       const isPasswordCorrect = bcrypt.compareSync(password,isUserValid.password)
       if(!isPasswordCorrect){
-        return  res.status(500).json([{message:"Wrong Credentials"}])
+        return  res.status(500).json({message:"Wrong Credentials"})
       }
 
       const accessToken = jwt.sign({name:isUserValid.name},"masai",{expiresIn:"10m"})
