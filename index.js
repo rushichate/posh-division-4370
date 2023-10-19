@@ -18,12 +18,8 @@ app.get("/",(req,res)=>{
 app.use(express.json())
 app.use(cors());
 app.use("/users",userRouter)
-app.use(verify)
-app.get("/ok",(req,res)=>{
-  res.send("verify working")
-})
-app.use("/message",messageRouter)
-app.use("/group",groupRouter)
+app.use("/message",verify, messageRouter)
+app.use("/group",verify, groupRouter)
 
 
 

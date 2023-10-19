@@ -2,12 +2,10 @@ const jwt = require("jsonwebtoken");
 
 
 
+
 const verify = async (req, res, next) => {
-
-
-const token = req.headers.Authorization;
-console.log(token)
-
+    const token = req.headers.authorization
+    console.log(token)
 if (!token) return res.sendStatus(401);
 
 jwt.verify(token, 'masai', function (err, decoded) {
